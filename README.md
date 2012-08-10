@@ -14,7 +14,7 @@ The plugin registers `application/x-fxplugindemo` as its MIME type.
 	cd projects
 	git clone git://github.com/medopaw/FxPluginDemo.git FxPluginDemo
 	cd ..
-	./FireBreath/prepmac.sh projects/
+	./FireBreath/prepmac.sh projects/ build/
 	cd build
 	xcodebuild
 	ln -s projects/FxPluginDemo/Debug/FxPluginDemo.plugin ~/Library/Internet\ Plug-Ins/
