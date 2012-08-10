@@ -4,13 +4,13 @@ This repository contains the source code for FxPluginDemo, a Firefox plugin demo
 The plugin registers `application/x-fxplugindemo` as its MIME type.
 
 # Demonstration
-1. Show a picture in plugin window. (Under Development)
+1. Display a picture in plugin window. (Under Development)
 -  Provide a scriptable port function. (Done)
 
 # Installation & Building on Mac
 
 	git clone git://github.com/firebreath/FireBreath.git FireBreath
-    mkdir projects
+	mkdir projects
 	cd projects
 	git clone git://github.com/medopaw/FxPluginDemo.git FxPluginDemo
 	cd ..
