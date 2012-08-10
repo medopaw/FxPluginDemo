@@ -1,8 +1,9 @@
 # Description
 This repository contains the source code for FxPluginDemo, a Firefox plugin demo using [FireBreath](http://www.firebreath.org).
+
 The plugin registers `application/x-fxplugindemo` as its MIME type.
 
-# Demostration
+# Demonstration
 1. Showing a picture in plugin window (under development)
 -  Provide a scriptable port (done)
 
