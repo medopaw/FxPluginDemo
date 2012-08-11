@@ -4,7 +4,7 @@ This repository contains the source code for FxPluginDemo, a Firefox plugin demo
 The plugin registers `application/x-fxplugindemo` as its MIME type.
 
 # Demonstration
-1. Display a picture in plugin window. (Under Development)
+1. Display a picture in plugin window. (Done)
 -  Provide a scriptable port function. (Done)
 
 # Installation & Building on Mac
