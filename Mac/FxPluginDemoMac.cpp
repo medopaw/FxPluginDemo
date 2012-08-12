@@ -13,7 +13,7 @@ License:    GPLv3
 FxPluginDemoMac::FxPluginDemoMac()
 {
 }
- 
+
 FxPluginDemoMac::~FxPluginDemoMac()
 {
 }
@@ -23,25 +23,28 @@ bool FxPluginDemoMac::onWindowAttached(FB::AttachedEvent* evt, FB::PluginWindowM
 	// load the picture from url
 	CFURLRef url = CFURLCreateWithString(NULL, CFSTR("http://www.mozilla.org/media/img/firefox/template/header-logo.png"), NULL);
 	CGDataProviderRef dataProvider = CGDataProviderCreateWithURL(url);
-	m_image = CGImageCreateWithPNGDataProvider(dataProvider, NULL, false, kCGRenderingIntentDefault);	// here we use fasle instead of "NO"
+	m_image = CGImageCreateWithPNGDataProvider(dataProvider, NULL, false, kCGRenderingIntentDefault);
 
-	return FxPluginDemo::onWindowAttached(evt,wnd);
+	return FxPluginDemo::onWindowAttached(evt, wnd);
 }
 
 bool FxPluginDemoMac::onWindowDetached(FB::DetachedEvent* evt, FB::PluginWindowMac* wnd)
 {
-    return FxPluginDemo::onWindowDetached(evt,wnd);
+	// release picture resource
+	CGImageRelease(m_image);
+
+    return FxPluginDemo::onWindowDetached(evt, wnd);
 }
 
 bool FxPluginDemoMac::onDrawCG(FB::CoreGraphicsDraw *evt, FB::PluginWindowMacCG*)
 {
-    FB::Rect bounds(evt->bounds);
-    FB::Rect clip(evt->clip);
-    CGContextRef cgContext(evt->context);
-	short width = bounds.right - bounds.left, height = bounds.bottom - bounds.top;
-
 	// save the states
+	CGContextRef cgContext(evt->context);
 	CGContextSaveGState(cgContext);
+
+	// calculate width and height
+	FB::Rect bounds(evt->bounds);
+	short width = bounds.right - bounds.left, height = bounds.bottom - bounds.top;
 
 	// flip the coordinate space
 	CGContextTranslateCTM(cgContext, 0.0, height);
@@ -52,10 +55,10 @@ bool FxPluginDemoMac::onDrawCG(FB::CoreGraphicsDraw *evt, FB::PluginWindowMacCG*
 	CGContextClearRect(cgContext, rect);
 
 	// draw the picture
-	CGContextDrawImage(cgContext, rect, m_image);  
+	CGContextDrawImage(cgContext, rect, m_image);
 
 	// restore the states
 	CGContextRestoreGState(cgContext);
 
-    return true;
+	return true;
 }
