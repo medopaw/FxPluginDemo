@@ -8,8 +8,12 @@ The plugin registers `application/x-fxplugindemo` as its MIME type.
 -  Provide a scriptable port function. (Done)
 
 # Installation & Building on Mac
+Needs to install [CMake](http://www.cmake.org/) first.
 
 	git clone git://github.com/firebreath/FireBreath.git FireBreath
+	cd FireBreath
+	git submodule update --init --recursive
+	cd ..
 	mkdir projects
 	cd projects
 	git clone git://github.com/medopaw/FxPluginDemo.git FxPluginDemo
